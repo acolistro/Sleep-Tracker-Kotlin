@@ -23,28 +23,30 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface SleepDatabaseDao {}
+interface SleepDatabaseDao {
 
-//Insert a sleepnight entity into the database
-@Insert
-fun insert(night: SleepNight) {}
+    //Insert a sleepnight entity into the database
+    @Insert
+    fun insert(night: SleepNight)
 
-//Update some or all of the entity's properties
-@Update
-fun update(night: SleepNight) {}
+    //Update some or all of the entity's properties
+    @Update
+    fun update(night: SleepNight)
 
-//Select all columns from the table where the nightId matches the key argument
-@Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
-fun get(key: Long): SleepNight? { return null }
+    //Select all columns from the table where the nightId matches the key argument
+    @Query("SELECT * from daily_sleep_quality_table WHERE nightId = :key")
+    fun get(key: Long): SleepNight?
 
-//Delete everything in the tables
-@Query("DELETE FROM daily_sleep_quality_table")
-fun clear() {}
+    //Delete everything in the tables
+    @Query("DELETE FROM daily_sleep_quality_table")
+    fun clear()
 
-//Get one night from the table
-@Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
-fun getTonight() {}
+    //Get one night from the table
+    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC LIMIT 1")
+    fun getTonight()
 
-//Get all nights from the table
-@Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC")
-fun getAllNights(): LiveData<List<SleepNight>>? { return null }
+    //Get all nights from the table
+    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY nightId DESC")
+    fun getAllNights(): LiveData<List<SleepNight>>
+    
+}
